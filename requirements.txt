@@ -1,0 +1,16 @@
+qdrant-client
+numpy
+scikit-learn
+torch
+transformers
+sentence-transformers
+fastapi
+uvicorn
+langchain
+langchain-community
+langchain-openai
+openai
+tiktoken
+ctransformers
+llama-cpp-python
+python-dotenv

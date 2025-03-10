@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+  app:
+    build: .
+    container_name: ia_env
+    depends_on:
+      - qdrant
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+      - OPENAI_API_KEY=your_openai_api_key
+
+volumes:
+  qdrant_storage:
+
