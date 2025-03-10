@@ -17,19 +17,22 @@ Este projeto tem como objetivo criar um sistema de **Compliance Jurídico** util
 - **Flask**: Framework para a criação de APIs.
 - **TinyMCE**: Editor WYSIWYG para visualização e edição de documentos gerados.
 
-## Como Executar o Projeto
+## Como Executar o Projeto com Docker
 
 ### Pré-requisitos
 
 Certifique-se de que você tenha as seguintes ferramentas instaladas:
 
-- **Docker**
-- **Python 3.x**
-- **pip**
+- **Docker**: Para executar o projeto em containers.
+- **Docker Compose**: Para facilitar a orquestração dos containers.
+- **Git**: Para versionamento de código.
 
-### Passos para Configuração
+### Passos para Instalar e Rodar com Docker
 
 1. Clone este repositório:
    ```bash
    git clone git@github.com:RafaelAbath/ia-compliance.git
    cd ia-compliance
+
+- **Instruções para utilizar sempre com Docker**, reforçando que o Docker é a forma recomendada para executar o projeto.
+- **Dicas para garantir que Docker seja usado consistentemente**, como sempre utilizar `docker-compose` para iniciar o projeto, evitando instalação manual de dependências no ambiente local.
