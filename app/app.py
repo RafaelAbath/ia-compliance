@@ -1,7 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from app.rag_pipeline import answer_question
-
+from dotenv import load_dotenv
+load_dotenv()
 app = FastAPI(title="Compliance Jurídico RAG API")
+
+import os
+print(os.getenv("OPENAI_API_KEY"))
+
 
 @app.get("/")
 def root():
