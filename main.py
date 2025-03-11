@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from app.rag_pipeline import answer_question
 from dotenv import load_dotenv
 load_dotenv()
