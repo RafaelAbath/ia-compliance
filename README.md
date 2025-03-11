@@ -32,7 +32,7 @@ Certifique-se de que você tenha as seguintes ferramentas instaladas:
 1. Clone este repositório:
    ```bash
    git clone git@github.com:RafaelAbath/ia-compliance.git
-   cd ia-compliance
+   
 
 - **Instruções para utilizar sempre com Docker**, reforçando que o Docker é a forma recomendada para executar o projeto.
 - **Dicas para garantir que Docker seja usado consistentemente**, como sempre utilizar `docker-compose` para iniciar o projeto, evitando instalação manual de dependências no ambiente local.
