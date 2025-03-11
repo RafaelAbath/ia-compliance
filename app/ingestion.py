@@ -16,10 +16,11 @@ def carregar_documento(caminho_arquivo):
     qdrant_url = os.getenv("QDRANT_HOST", "localhost")
     qdrant_port = os.getenv("QDRANT_PORT", "6333")
 
-    qdrant = Qdrant.from_documents(
+    client = Qdrant.from_documents(
         docs_divididos,
         embeddings,
-        url=f"http://{qdrant_url}:{qdrant_port}",
+        host=qdrant_url,  # Usando host e port diretamente
+        port=qdrant_port,
         collection_name="compliance_docs"
     )
 
