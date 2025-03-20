@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 import os
 from dotenv import load_dotenv
 
@@ -11,7 +13,6 @@ load_dotenv()
 app = FastAPI(title="Compliance Jurídico com OpenAI")
 
 # Carrega a chave da OpenAI
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Modelo Pydantic para receber a pergunta
 class PerguntaModel(BaseModel):
@@ -21,20 +22,18 @@ class PerguntaModel(BaseModel):
 def root():
     return {"message": "API de Compliance Jurídico com OpenAI"}
 
-@app.post("/perguntar-openai/")
+@app.post("/perguntar-openai-api/")
 def perguntar_openai(pergunta: PerguntaModel):
     try:
-        # Fazendo uma chamada para o modelo GPT-3 da OpenAI para gerar uma resposta
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Usando o modelo GPT-3.5 Turbo
-            messages=[
-                {"role": "system", "content": "Você é um assistente jurídico."},
-                {"role": "user", "content": pergunta.pergunta}
-            ]
-        )
-        
-        resposta = response['choices'][0]['message']['content'].strip()
-        
+        # Fazendo uma chamada para o modelo GPT-3.5 da OpenAI para gerar uma resposta
+        response = client.chat.completions.create(model="gpt-3.5-turbo",  # Usando o modelo GPT-3.5 Turbo
+        messages=[
+            {"role": "system", "content": "Você é um assistente jurídico."},
+            {"role": "user", "content": pergunta.pergunta}
+        ])
+
+        resposta = response.choices[0].message.content.strip()
+
         return {
             "pergunta": pergunta.pergunta,
             "resposta": resposta
