@@ -6,12 +6,13 @@ from openai import OpenAI
 
 
 load_dotenv()  # Carregar as variáveis do .env
-
+print(f"ORGANIZATION: {os.getenv('ORGANIZATION')}")
 # Verifique se a chave está sendo carregada corretamente
 print(f"OPENAI_API_KEY: {os.getenv('OPENAI_API_KEY')}")
 
 # Inicializando o cliente OpenAI com a chave da API
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), organization=os.getenv("ORGANIZATION"))
+
 
 # Inicializando o FastAPI
 app = FastAPI(title="Compliance Jurídico com OpenAI")
@@ -26,7 +27,7 @@ class PerguntaModel(BaseModel):
 def root():
     return {"message": "API de Compliance Jurídico com OpenAI"}
 
-@app.post("/perguntar-openai-api/")
+@app.post("/pergunta/")
 def perguntar_openai(pergunta: PerguntaModel):
     try:
         # Fazendo uma chamada para o modelo GPT-3.5 da OpenAI para gerar uma resposta
