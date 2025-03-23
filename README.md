@@ -1,38 +1,79 @@
-# Projeto de Compliance Jurídico com IA
+Compliance Jurídico com OpenAI
+Este projeto utiliza OpenAI, Qdrant, e Docker para criar um sistema de compliance jurídico inteligente, permitindo que usuários realizem perguntas jurídicas e obtenham respostas geradas por IA, otimizadas por um mecanismo de busca avançada. O sistema é baseado em FastAPI e utiliza o modelo GPT-3.5 da OpenAI, com integração de Qdrant para armazenamento e recuperação de dados.
 
-Este projeto tem como objetivo criar um sistema de **Compliance Jurídico** utilizando Inteligência Artificial, integrando técnicas avançadas de IA com a ferramenta **Qdrant** para armazenamento e busca de dados jurídicos. O projeto usa a **OpenAI** para gerar conteúdo jurídico de maneira automatizada e utiliza um banco de dados vetorial para otimizar a pesquisa e o gerenciamento dos documentos.
+Funcionalidades
+Consultas Jurídicas: Permite que usuários realizem perguntas jurídicas e obtenham respostas geradas pela IA, com base no modelo GPT-3.5 da OpenAI.
 
-## Funcionalidades
+Armazenamento e Recuperação: Utiliza Qdrant para armazenamento de dados e otimização das consultas com recuperação de informações relevantes.
 
-- **Busca de Jurisprudências**: Permite realizar buscas em um banco de dados de jurisprudências utilizando filtros avançados.
-- **Gerenciamento de Documentos**: Armazenamento e recuperação de documentos legais, otimizados com IA.
-- **Geração de Peças Jurídicas**: Geração automatizada de peças jurídicas usando modelos de linguagem, com a possibilidade de edição diretamente no editor TinyMCE.
-  
-## Tecnologias Utilizadas
+Interface Simples: A API foi construída com FastAPI para proporcionar uma integração rápida e eficiente.
 
-- **Qdrant**: Banco de dados vetorial para armazenamento e recuperação eficiente de dados.
-- **OpenAI**: Utilizado para a geração de texto jurídico e automação de tarefas de compliance.
-- **Docker**: Containerização para facilitar o desenvolvimento e a implantação do projeto.
-- **Python**: Linguagem de programação principal para o backend.
-- **Flask**: Framework para a criação de APIs.
-- **TinyMCE**: Editor WYSIWYG para visualização e edição de documentos gerados.
+Tecnologias Usadas
+OpenAI GPT-3.5: Geração de respostas jurídicas inteligentes.
 
-## Como Executar o Projeto com Docker
+Qdrant: Banco de dados vetorial utilizado para otimizar a recuperação de dados.
 
-### Pré-requisitos
+Docker: Contêinerização do projeto para facilitar o ambiente de desenvolvimento e deployment.
 
-Certifique-se de que você tenha as seguintes ferramentas instaladas:
+FastAPI: Framework para a criação da API.
 
-- **Docker**: Para executar o projeto em containers.
-- **Docker Compose**: Para facilitar a orquestração dos containers.
-- **Git**: Para versionamento de código.
+Python 3.10: Linguagem de programação utilizada no backend.
 
-### Passos para Instalar e Rodar com Docker
+dotenv: Para carregamento de variáveis de ambiente, como a chave da API da OpenAI.
 
-1. Clone este repositório:
-   ```bash
-   git clone git@github.com:RafaelAbath/ia-compliance.git
-   cd ia-compliance
+Uvicorn: Servidor ASGI para executar o FastAPI.
 
-- **Instruções para utilizar sempre com Docker**, reforçando que o Docker é a forma recomendada para executar o projeto.
-- **Dicas para garantir que Docker seja usado consistentemente**, como sempre utilizar `docker-compose` para iniciar o projeto, evitando instalação manual de dependências no ambiente local.
+Como Rodar o Projeto
+Requisitos
+Docker: Necessário para rodar o container de Qdrant e o servidor FastAPI.
+
+Docker Compose: Para orquestrar os containers.
+
+Python 3.10: Para rodar o ambiente de desenvolvimento da aplicação.
+
+Passos para Execução
+Clone o repositório:
+
+bash
+git clone <URL_DO_REPOSITÓRIO>
+cd <diretório_do_repositório>
+Criar o arquivo .env: Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
+
+env
+OPENAI_API_KEY=sk-<sua_chave_da_openai>
+ORGANIZATION=org-<sua_organização_openai>
+QDRANT_HOST=localhost
+QDRANT_PORT=6333
+
+Build os containers Docker: Com o Docker e Docker Compose instalados, execute o seguinte comando para construir as imagens e rodar os containers:
+bash
+docker-compose up --build
+Isso irá subir dois containers:
+
+Qdrant: Banco de dados vetorial para armazenamento de dados.
+App: O servidor FastAPI que executa a API e o cliente OpenAI.
+Acesse a API: Após os containers estarem rodando, você pode acessar a API em http://localhost:8000. A documentação da API estará disponível em http://localhost:8000/docs.
+
+Dependências
+Este projeto utiliza as seguintes dependências:
+
+qdrant-client
+numpy
+scikit-learn
+torch
+transformers
+sentence-transformers
+fastapi
+uvicorn
+langchain
+langchain-community
+langchain-openai
+openai
+tiktoken
+ctransformers
+llama-cpp-python
+python-dotenv
+
+Você pode instalar as dependências manualmente com:
+bash
+pip install -r requirements.txt
