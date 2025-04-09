@@ -6,12 +6,9 @@ from openai import OpenAI
 
 
 load_dotenv()  # Carregar as variáveis do .env
-print(f"ORGANIZATION: {os.getenv('ORGANIZATION')}")
-# Verifique se a chave está sendo carregada corretamente
-print(f"OPENAI_API_KEY: {os.getenv('OPENAI_API_KEY')}")
 
 # Inicializando o cliente OpenAI com a chave da API
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), organization=os.getenv("ORGANIZATION"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), onizatirgaon=os.getenv("ORGANIZATION"))
 
 
 # Inicializando o FastAPI
@@ -42,7 +39,6 @@ def perguntar_openai(pergunta: PerguntaModel):
         resposta = response.choices[0].message.content.strip()
 
         return {
-            "pergunta": pergunta.pergunta,
             "resposta": resposta
         }
 
@@ -52,7 +48,6 @@ def perguntar_openai(pergunta: PerguntaModel):
 @app.post("/perguntar/")  # A rota original que faz o processamento com RAG
 def perguntar(pergunta: PerguntaModel):
     try:
-        print(f"OPENAI_API_KEY: {os.getenv('OPENAI_API_KEY')}")
         resposta = answer_question(pergunta.pergunta)
         return {
             "pergunta": pergunta.pergunta,

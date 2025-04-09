@@ -2,11 +2,11 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Qdrant
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
-from qdrant_client import QdrantClient  # <- importante!
+from qdrant_client import QdrantClient 
 import os
 
 def answer_question(pergunta: str):
-    print(f"Pergunta recebida: {pergunta}")  # Log da pergunta recebida
+    print(f"Pergunta recebida: {pergunta}")  
     
     # Obtendo as variáveis de ambiente
     qdrant_url = os.getenv("QDRANT_HOST", "localhost")

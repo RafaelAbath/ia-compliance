@@ -19,7 +19,7 @@ def carregar_documento(caminho_arquivo):
     client = Qdrant.from_documents(
         docs_divididos,
         embeddings,
-        host=qdrant_url,  # Usando host e port diretamente
+        host=qdrant_url,  
         port=qdrant_port,
         collection_name="compliance_docs"
     )
